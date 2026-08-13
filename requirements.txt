@@ -1,1 +1,4 @@
-
+Flask>=2.2.0
+pysnmp>=4.4.12
+PyYAML>=6.0
+python-dotenv>=1.0.0
