@@ -1,1 +1,86 @@
+body {
+    background: #f0f4f8;
+    font-family: 'Tahoma', 'Segoe UI', sans-serif;
+}
 
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.card {
+    border-radius: 12px;
+    border: none;
+}
+
+.switch-card {
+    transition: all 0.2s;
+}
+.switch-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.port-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4px;
+    margin-top: 8px;
+}
+.port-item {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    transition: all 0.2s;
+    cursor: default;
+}
+.port-item.up {
+    background: #2ecc71;
+}
+.port-item.down {
+    background: #e74c3c;
+}
+.port-item.vlan-10 {
+    border: 2px solid #3498db;
+}
+.port-item.vlan-20 {
+    border: 2px solid #f39c12;
+}
+.port-item.vlan-30 {
+    border: 2px solid #9b59b6;
+}
+.port-item .port-label {
+    display: none;
+}
+.port-item:hover .port-label {
+    display: block;
+    position: absolute;
+    top: -20px;
+    background: rgba(0,0,0,0.8);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.uplink-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin: 2px;
+    font-size: 12px;
+}
+.uplink-badge.up {
+    background: #2ecc71;
+    color: #fff;
+}
+.uplink-badge.down {
+    background: #e74c3c;
+    color: #fff;
+}
