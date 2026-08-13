@@ -1,0 +1,16 @@
+
+---
+
+## 🚀 نحوه اجرا
+
+```bash
+# ۱. نصب کتابخانه‌ها
+pip install -r requirements.txt
+
+# ۲. ویرایش فایل config.yaml با اطلاعات سوئیچ‌های خودتان
+
+# ۳. اجرا
+python app.py
+
+# ۴. باز کردن مرورگر (کروم)
+# آدرس: http://localhost:5000
