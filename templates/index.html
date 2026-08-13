@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetVision Dashboard</title>
+    <!-- Bootstrap & Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container-fluid px-4 py-3">
+        <!-- Header -->
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="bg-gradient-primary text-white p-3 rounded-3 shadow-sm">
+                    <h1 class="h3"><i class="fas fa-network-wired me-2"></i> NetVision Dashboard</h1>
+                    <p class="mb-0 small">نظارت بلادرنگ بر شبکه</p>
+                </div>
+            </div>
+        </div>
 
+        <!-- Speed Chart -->
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <i class="fas fa-chart-line me-2"></i> سرعت شبکه (Mbps)
+                    </div>
+                    <div class="card-body">
+                        <canvas id="speedChart" height="80"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Switches Cards -->
+        <div class="row" id="switchesContainer">
+            {% for switch in switches %}
+            <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
+                <div class="card switch-card shadow-sm" data-ip="{{ switch.ip }}">
+                    <div class="card-header bg-secondary bg-opacity-10 d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-server me-2"></i> <span class="switch-name">{{ switch.name }}</span></span>
+                        <span class="badge bg-success" id="status-{{ switch.ip }}">فعال</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <p><i class="fas fa-tag me-1"></i> <span class="fw-bold">SysName:</span> <span class="sys-name" id="sysName-{{ switch.ip }}">...</span></p>
+                                <p><i class="fas fa-info-circle me-1"></i> <span class="fw-bold">مدل:</span> <span class="sys-desc" id="sysDesc-{{ switch.ip }}">...</span></p>
+                            </div>
+                            <div class="col-6 text-end">
+                                <p><i class="fas fa-arrow-down text-primary me-1"></i> <span class="fw-bold">Down:</span> <span class="in-speed" id="inSpeed-{{ switch.ip }}">0</span> Mbps</p>
+                                <p><i class="fas fa-arrow-up text-success me-1"></i> <span class="fw-bold">Up:</span> <span class="out-speed" id="outSpeed-{{ switch.ip }}">0</span> Mbps</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Ports Status -->
+                        <div class="port-grid" id="ports-{{ switch.ip }}">
+                            <!-- توسط JS پر می‌شود -->
+                        </div>
+                        <!-- Uplinks -->
+                        <hr>
+                        <div class="uplink-status">
+                            <span class="fw-bold">پورت‌های آپلینک: </span>
+                            <span id="uplinks-{{ switch.ip }}">...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
