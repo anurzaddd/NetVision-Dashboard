@@ -1,0 +1,25 @@
+VLAN Mapping
+In config.yaml, define port ranges:
+
+yaml
+vlan_mapping:
+  "1-20": 10
+  "21-36": 20
+  "37-48": 30
+
+
+
+Uplink Ports
+Default uplink ports: 47, 48, 49, 50. You can change in snmp_utils.py.
+
+
+
+
+🤝 Contributing
+Contributions are welcome!
+
+Fork the repository
+
+Create a feature branch
+
+Submit a Pull Request
